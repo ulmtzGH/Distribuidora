@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Distribuidora.Entities.Models
 {
-    public class TipoProduco
+    public class TipoProducto
     {
         public int IdTipoProducto { get; set; }
 

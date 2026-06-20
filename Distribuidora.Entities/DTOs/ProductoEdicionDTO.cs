@@ -14,11 +14,13 @@ namespace Distribuidora.Entities.DTOs
 
         public string Nombre { get; set; } = string.Empty;
 
+        public string? TipoProducto { get; set; } = string.Empty;
+
         public int IdTipoProducto { get; set; }
 
         public decimal? Precio { get; set; }
 
-        public bool EsActivo { get; set; }
+        public bool Activo { get; set; }
 
         public List<ProductoProveedorDTO> Proveedores { get; set; } = new();
     }

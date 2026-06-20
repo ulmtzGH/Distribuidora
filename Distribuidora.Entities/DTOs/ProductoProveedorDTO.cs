@@ -8,6 +8,7 @@ namespace Distribuidora.Entities.DTOs
 {
     public class ProductoProveedorDTO
     {
+        public int IdProductoProveedor { get; set; }
         public int IdProveedor { get; set; }
 
         public string NombreProveedor { get; set; } = string.Empty;

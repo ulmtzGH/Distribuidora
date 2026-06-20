@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Distribuidora.Web.ViewModels.ProductoViewModel>
+
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<h2 class="mb-4">Productos</h2>
+
+<div class="mb-3">
+    <a asp-action="Crear" class="btn btn-primary">
+        Nuevo Producto
+    </a>
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Clave</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th class="text-end">Precio</th>
+            @*<th>Activo</th>*@
+            <th width="180"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Clave</td>
+
+                <td>@item.Nombre</td>
+
+                <td>@item.TipoProducto</td>
+
+                <td class="text-end">
+                    @(item.Precio?.ToString("C"))
+                </td>
+
+                @*<td>
+
+                    @if (item.Activo)
+                    {
+                        <span class="badge bg-success">
+                            Sí
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">
+                            No
+                        </span>
+                    }
+
+                </td>*@
+
+                <td>
+
+                    <a asp-action="Editar"
+                       asp-route-id="@item.IdProducto"
+                       class="btn btn-warning btn-sm">
+
+                        Editar
+
+                    </a>
+
+                    <a asp-action="Eliminar"
+                       asp-route-id="@item.IdProducto"
+                       class="btn btn-danger btn-sm">
+
+                        Eliminar
+
+                    </a>
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<a asp-action="Crear"
+   class="btn btn-primary">
+
+    Agregar Producto
+
+</a>

@@ -16,10 +16,12 @@ namespace Distribuidora.Entities.Models
 
         public int IdTipoProducto { get; set; }
 
+        public string? TipoProducto { get; set; }
+
         public decimal? Precio { get; set; }
 
-        public bool EsActivo { get; set; }
+        public bool Activo { get; set; }
 
-        public List<ProductoProveedor> Proveedores { get; set; } = new();
+        public List<ProductoProveedor> Proveedores { get; set; } = [];
     }
 }

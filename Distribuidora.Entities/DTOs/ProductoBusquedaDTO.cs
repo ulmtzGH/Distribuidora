@@ -18,6 +18,6 @@ namespace Distribuidora.Entities.DTOs
 
         public decimal? Precio { get; set; }
 
-        public bool EsActivo { get; set; }
+        public bool Activo { get; set; }
     }
 }

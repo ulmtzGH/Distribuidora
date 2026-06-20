@@ -1,3 +1,8 @@
+using Distribuidora.Web.Configuration;
+using Distribuidora.Web.Services;
+using Distribuidora.Web.Services.Interfaces;
+using Microsoft.Extensions.Options;
+
 namespace Distribuidora.Web
 {
     public class Program
@@ -8,6 +13,27 @@ namespace Distribuidora.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.Configure<ApiSettings>(
+                builder.Configuration.GetSection("ApiSettings"));
+
+            builder.Services.AddHttpClient<IProductoService, ProductoService>((serviceProvider, client) =>
+            {
+                var settings = serviceProvider
+                    .GetRequiredService<IOptions<ApiSettings>>()
+                    .Value;
+
+                client.BaseAddress = new Uri(settings.BaseUrl);
+            });
+
+            builder.Services.AddHttpClient<ITipoProductoService, TipoProductoService>((serviceProvider, client) =>
+            {
+                var settings = serviceProvider
+                    .GetRequiredService<IOptions<ApiSettings>>()
+                    .Value;
+
+                client.BaseAddress = new Uri(settings.BaseUrl);
+            });
 
             var app = builder.Build();
 

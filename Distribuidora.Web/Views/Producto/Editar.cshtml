@@ -1,0 +1,89 @@
+﻿@using Distribuidora.Web.ViewModels
+@model ProductoViewModel
+
+<h2>Producto</h2>
+
+<form asp-action="Crear" method="post">
+
+    <div class="mb-3">
+
+        <label asp-for="Clave"></label>
+
+        <input asp-for="Clave" class="form-control" />
+
+        <span asp-validation-for="Clave" class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label asp-for="Nombre"></label>
+
+        <input asp-for="Nombre" class="form-control" />
+
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+
+    </div>
+
+    @* <div class="mb-3">
+
+        <label asp-for="TipoProducto"></label>
+
+        <select asp-for="TipoProducto" class="form-select">
+
+            <option value="">Seleccione...</option>
+
+            <option value="1">Limpieza</option>
+            <option value="2">Abarrotes</option>
+            <option value="3">Papelería</option>
+
+        </select>
+
+    </div> *@
+
+    <div class="mb-3">
+
+        <label asp-for="IdTipoProducto"></label>
+
+        <select asp-for="IdTipoProducto"
+                asp-items="ViewBag.TiposProducto"
+                class="form-select">
+
+            <option value="">Seleccione...</option>
+
+        </select>
+
+        <span asp-validation-for="IdTipoProducto"
+              class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label asp-for="Precio"></label>
+
+        <input asp-for="Precio" class="form-control" />
+
+    </div>
+
+    <div class="form-check mb-4">
+
+        <input asp-for="Activo" class="form-check-input" />
+
+        <label asp-for="Activo" class="form-check-label"></label>
+
+    </div>
+
+    <button class="btn btn-success">
+
+        Guardar
+
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+
+        Cancelar
+
+    </a>
+
+</form>

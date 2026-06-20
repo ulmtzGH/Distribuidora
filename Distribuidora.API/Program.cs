@@ -1,4 +1,8 @@
 
+using Distribuidora.Data.Configuration;
+using Distribuidora.Data.Interfaces;
+using Distribuidora.Data.Repositories;
+
 namespace Distribuidora.API
 {
     public class Program
@@ -8,6 +12,11 @@ namespace Distribuidora.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            builder.Services.AddSingleton<SqlConnectionFactory>();
+            builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
+            builder.Services.AddScoped<IProveedorRepository, ProveedorRepository>();
+            builder.Services.AddScoped<ITipoProductoRepository, TipoProductoRepository>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
